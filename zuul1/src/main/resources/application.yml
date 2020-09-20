@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 5555
+
+# 传统的路由转发（需要运维人员维护各个路由path和url的关系）
+#zuul:
+#  routes:
+#   api-a-url:
+#     path: /api-a-url/**  # 转发拦截
+#     url: http://localhost:8080/ # 转发地址
+
+# 面向服务路由
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: hello-service
+    api-b:
+      path: /api-b/**
+      serviceId: feign-consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/

@@ -1,0 +1,20 @@
+server:
+  port: 1112
+
+# 高可用注册中心
+eureka:
+  instance:
+    hostname: peer2
+  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
+
+spring:
+  application:
+    name: eureka-2
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false

@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: feign-consumer
+
+server:
+  port: 9001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
+
+# ribbon全局配置
+ribbon:
+  ConnectTimeout: 500
+  ReadTimeout: 500
+
+#feign:
+#  hystrix:
+#    enabled: true
+
+#hystrix:
+#  command:
+#    ddefault:
+#      execution:
+#        timeout:
+#          enabled: false
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 5000
+
+# 指定服务配置，服务名区分大小写
+hello-service:
+  ribbon:
+    ConnectTimeout: 555
+    ReadTimeout: 5555
+#    MaxAutoRetries: 1 # 尝试访问首选实例1次，失败后才更换实例访问
+#    MaxAutoRetriesNextServer: 2 # 尝试更换2次实例进行重试
+
+#logging:
+#  level:
+#    cn.fan.feign1.service.HelloService: debug
