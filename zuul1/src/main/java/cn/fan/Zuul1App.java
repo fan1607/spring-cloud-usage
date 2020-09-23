@@ -1,8 +1,10 @@
 package cn.fan;
 
 import cn.fan.filter.AccessFilter;
+import cn.fan.filter.MyErrorAttributes;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
@@ -23,5 +25,10 @@ public class Zuul1App {
     @Bean
     public AccessFilter accessFilter() {
         return new AccessFilter();
+    }
+
+    @Bean
+    public DefaultErrorAttributes errorAttributes() {
+        return new MyErrorAttributes();
     }
 }
