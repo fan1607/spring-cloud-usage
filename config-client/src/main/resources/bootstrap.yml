@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: fan
+
+  cloud:
+    config:
+      profile: dev
+      label: master
+
+      # 传统模式，直连config-server
+#      uri: http://localhost:7001
+
+      # eureka服务发现
+      discovery:
+        enabled: true
+        service-id: config-server
+
+      # 客户端优先判断Config Server获取是否正常，并快速响应失败内容
+      fail-fast: true
+      retry:
+        initial-interval: 1000
+        multiplier: 1.1 # 下一间隔的乘数
+        max-interval: 2000
+        max-attempts: 6
+
+#      # 安全机制鉴权
+#      username: fan
+#      password: 117ad899-c097-4be2-b43b-ce05daad0d25
+
+
+server:
+  port: 7002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info

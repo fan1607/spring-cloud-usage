@@ -5,10 +5,20 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/fan1607/spring-cloud-usage/
+          uri: https://github.com/fan1607/config-repo
           search-paths: config-server
           username: yuefanlee@gmail.com
-          password:
+          password: git_pwd
+
+#  security:
+#    user:
+#      name: fan
+#      password: 117ad899-c097-4be2-b43b-ce05daad0d25
 
 server:
   port: 7001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka
